@@ -1,4 +1,4 @@
 # 2048
 Simple 2048 Game in C++
 
-Controls are left, right, up and down.
+Controls are to be left, right, up and down.
