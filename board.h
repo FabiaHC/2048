@@ -1,9 +1,15 @@
+#include <vector>
+
 #ifndef BOARD_H
 #define BOARD_H
 
 namespace board
 {
-  void display(int board[5][5]);
+  std::vector <std::vector<int> > create();
+
+  void display(std::vector <std::vector<int> > board);
+
+  std::vector<std::vector<int> > getAvilablePositions(std::vector <std::vector<int> > board);
 }
 
 #endif

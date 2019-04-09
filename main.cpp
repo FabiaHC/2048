@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include <cstdlib>
 #include <ctime>
@@ -10,15 +11,27 @@ int main()
 {
   srand(time(NULL));
   bool gameRunning{true};
-  int board[5][5]{0};
+  std::vector <std::vector<int> > board = board::create();
   int score{0};
-  /*while (!gameRunning)
+  int sparePosition;
+  int x;
+  int y;
+  std::string command;
+  std::vector<std::vector<int> > positions = board::getAvilablePositions(board);
+  while (gameRunning)
   {
+    sparePosition = logic::random(0, positions.size()-1);
+    y = positions.at(sparePosition).at(0);
+    x = positions.at(sparePosition).at(1);
+    board.at(y).at(x) = 2;
+    board::display(board);
+    std::cin >> command;
 
-  }*/
-  for (int i{0}; i < 20; i++)
-  {
-    std::cout << logic::random(0,10) << std::endl;
+    if (command == "quit")
+    {
+      gameRunning = false;
+      std::cout << "Quiting..." << std::endl;
+    }
   }
   return 0;
 }
