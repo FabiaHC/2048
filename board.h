@@ -10,6 +10,8 @@ namespace board
   void display(std::vector <std::vector<int> > board);
 
   std::vector<std::vector<int> > getAvilablePositions(std::vector <std::vector<int> > board);
+
+  void integrate(std::vector <std::vector<int> > &board, int number);
 }
 
 #endif

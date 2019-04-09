@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "board.h"
+#include "logic.h"
 
 std::vector <std::vector<int> > board::create()
 {
@@ -39,4 +40,13 @@ std::vector<std::vector<int> > board::getAvilablePositions(std::vector <std::vec
     }
   }
   return positions;
+}
+
+void board::integrate(std::vector <std::vector<int> > &board, int number)
+{
+  std::vector<std::vector<int> > positions = board::getAvilablePositions(board);
+  int sparePosition = logic::random(0, positions.size()-1);
+  int y = positions.at(sparePosition).at(0);
+  int x = positions.at(sparePosition).at(1);
+  board.at(y).at(x) = 2;
 }
