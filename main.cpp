@@ -17,9 +17,9 @@ int main()
   int x;
   int y;
   std::string command;
-  std::vector<std::vector<int> > positions = board::getAvilablePositions(board);
   while (gameRunning)
   {
+    std::vector<std::vector<int> > positions = board::getAvilablePositions(board);
     sparePosition = logic::random(0, positions.size()-1);
     y = positions.at(sparePosition).at(0);
     x = positions.at(sparePosition).at(1);
