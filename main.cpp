@@ -17,9 +17,11 @@ int main()
   int x;
   int y;
   std::string command;
+  std::vector<std::vector<int> > positions;
   while (gameRunning)
   {
-    std::vector<std::vector<int> > positions = board::getAvilablePositions(board);
+    positions = board::getAvilablePositions(board);
+    std::cout << positions.size() << std::endl;
     sparePosition = logic::random(0, positions.size()-1);
     y = positions.at(sparePosition).at(0);
     x = positions.at(sparePosition).at(1);
@@ -31,6 +33,12 @@ int main()
     {
       gameRunning = false;
       std::cout << "Quiting..." << std::endl;
+    }
+
+    if (board::getAvilablePositions(board).size() == 0)
+    {
+      gameRunning = false;
+      std::cout << "You Lose!" << std::endl;
     }
   }
   return 0;
