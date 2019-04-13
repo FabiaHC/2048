@@ -27,7 +27,12 @@ int main()
       std::cout << "Quiting..." << std::endl;
     }
 
-    if (board::getAvilablePositions(board).size() == 0)
+    else if (command == "right")
+    {
+      logic::scooch(board, logic::direction::right);
+    }
+
+    else if (board::getAvilablePositions(board).size() == 0)
     {
       gameRunning = false;
       std::cout << "You Lose!" << std::endl;

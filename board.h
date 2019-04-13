@@ -1,7 +1,7 @@
-#include <vector>
-
 #ifndef BOARD_H
 #define BOARD_H
+
+#include <vector>
 
 namespace board
 {
