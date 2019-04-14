@@ -14,6 +14,10 @@ namespace logic
   };
 
   void scooch(std::vector< std::vector<int> > &board, direction dir);
+
+  void rotateRight(std::vector< std::vector<int> > &board);
+
+  void flip(std::vector< std::vector<int> > &board);
 }
 
 #endif

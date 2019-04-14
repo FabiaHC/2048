@@ -57,3 +57,38 @@ void logic::scooch(std::vector< std::vector<int> > &board, logic::direction dir)
     }
   }
 }
+
+void logic::rotateRight(std::vector< std::vector<int> > &board)
+{
+
+}
+
+void logic::flip(std::vector< std::vector<int> > &board)
+{
+  int middleIndex = board.size()/2;
+  if (board.size() % 2 == 1)
+  {
+    for (int y{0}; y < board.size(); y++)
+    {
+      for (int offset{0}; offset != middleIndex; offset++)
+      {
+        int temp = board.at(y).at(offset);
+        board.at(y).at(offset) = board.at(y).at(board.size()-1-offset);
+        board.at(y).at(board.size()-1-offset) = temp;
+      }
+    }
+  }
+
+  else if (board.size() & 0 == 0)
+  {
+    for (int y{0}; y < board.size(); y++)
+    {
+      for (int offset{0}; offset < board.size()/2; y++)
+      {
+        int temp = board.at(y).at(offset);
+        board.at(y).at(offset) = board.at(y).at(board.size()-1-offset);
+        board.at(y).at(board.size()-1-offset) = temp;
+      }
+    }
+  }
+}
