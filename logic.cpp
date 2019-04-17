@@ -56,6 +56,13 @@ void logic::scooch(std::vector< std::vector<int> > &board, logic::direction dir)
       }
     }
   }
+
+  else if (dir == logic::direction::left)
+  {
+    logic::flip(board);
+    logic::scooch(board, logic::direction::right);
+    logic::flip(board);
+  }
 }
 
 void logic::rotateRight(std::vector< std::vector<int> > &board)
