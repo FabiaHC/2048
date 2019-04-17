@@ -14,50 +14,63 @@ int main()
   std::vector <std::vector<int> > board = board::create();
   int score{0};
   std::string command;
+  bool acceptedInput;
   while (gameRunning)
   {
-    std::cout << "=====" << std::endl;
-    board::integrate(board, 2);
-    board::display(board);
-    std::cin >> command;
+    do
+    {
+      std::cout << "=====" << std::endl;
+      board::integrate(board, 2);
+      board::display(board);
+      std::cin >> command;
 
-    if (command == "quit")
+      if (command == "quit")
+      {
+        gameRunning = false;
+        std::cout << "Quiting..." << std::endl;
+      }
+
+      else if (command == "right")
+      {
+        logic::scooch(board, logic::direction::right);
+      }
+
+      else if (command == "left")
+      {
+        logic::scooch(board, logic::direction::left);
+      }
+
+      else if (command == "down")
+      {
+        logic::scooch(board, logic::direction::down);
+      }
+
+      else if (command == "up")
+      {
+        logic::scooch(board, logic::direction::up);
+      }
+
+      else
+      {
+        acceptedInput = false;
+        std::cout << "You entered invalid commands." << std::endl;
+      }
+
+    } while(!acceptedInput);
+    acceptedInput = true;
+
+    if (board::exists(board, 2048))
     {
       gameRunning = false;
-      std::cout << "Quiting..." << std::endl;
+      std::cout << "You Win!" << std::endl;
     }
 
-    else if (command == "right")
-    {
-      logic::scooch(board, logic::direction::right);
-    }
-
-    else if (command == "left")
-    {
-      logic::scooch(board, logic::direction::left);
-    }
-
-    else if (command == "down")
-    {
-      logic::scooch(board, logic::direction::down);
-    }
-
-    else if (command == "up")
-    {
-      logic::scooch(board, logic::direction::up);
-    }
-
-    if (board::getAvilablePositions(board).size() == 0)
+    else if (board::getAvilablePositions(board).size() == 0)
     {
       gameRunning = false;
       std::cout << "You Lose!" << std::endl;
     }
 
-    else if (board::exists(board, 2048))
-    {
-      gameRunning = false;
-      std::cout << "You Win!" << std::endl;
-    }
   }
   return 0;
 }
