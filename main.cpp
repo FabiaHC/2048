@@ -47,10 +47,16 @@ int main()
       logic::scooch(board, logic::direction::up);
     }
 
-    else if (board::getAvilablePositions(board).size() == 0)
+    if (board::getAvilablePositions(board).size() == 0)
     {
       gameRunning = false;
       std::cout << "You Lose!" << std::endl;
+    }
+
+    else if (board::exists(board, 2048))
+    {
+      gameRunning = false;
+      std::cout << "You Win!" << std::endl;
     }
   }
   return 0;

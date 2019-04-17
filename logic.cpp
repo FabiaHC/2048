@@ -99,16 +99,6 @@ void logic::rotateRight(std::vector< std::vector<int> > &board)
   board = fakeBoard;
 }
 
-/* For reference for turning it right:
-1 2 3 //for x for y
-10 20 30
-100 200 300
-
-1 10 100
-2 20 200
-3 30 300
-*/
-
 void logic::flip(std::vector< std::vector<int> > &board)
 {
   int middleIndex = board.size()/2;

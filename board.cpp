@@ -50,3 +50,18 @@ void board::integrate(std::vector <std::vector<int> > &board, int number)
   int x = positions.at(sparePosition).at(1);
   board.at(y).at(x) = 2;
 }
+
+bool board::exists(std::vector <std::vector<int> > &board, int numberTarget)
+{
+  for (int y{0}; y < board.size(); y++)
+  {
+    for (int x{0}; x < board.size(); x++)
+    {
+      if (numberTarget == board.at(y).at(x))
+      {
+        return true;
+      }
+    }
+  }
+  return false;
+}
