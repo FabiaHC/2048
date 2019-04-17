@@ -37,6 +37,16 @@ int main()
       logic::scooch(board, logic::direction::left);
     }
 
+    else if (command == "down")
+    {
+      logic::scooch(board, logic::direction::down);
+    }
+
+    else if (command == "up")
+    {
+      logic::scooch(board, logic::direction::up);
+    }
+
     else if (board::getAvilablePositions(board).size() == 0)
     {
       gameRunning = false;

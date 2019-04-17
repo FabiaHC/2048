@@ -4,6 +4,7 @@
 #include <cstdlib>
 
 #include "logic.h"
+#include "board.h"
 
 int logic::random(int min, int max)
 {
@@ -63,12 +64,50 @@ void logic::scooch(std::vector< std::vector<int> > &board, logic::direction dir)
     logic::scooch(board, logic::direction::right);
     logic::flip(board);
   }
+
+  else if (dir == logic::direction::down)
+  {
+    logic::rotateRight(board);
+    logic::scooch(board, logic::direction::right);
+    for (int i{0}; i < 3; i++)
+    {
+      logic::rotateRight(board);
+    }
+  }
+
+  else if (dir == logic::direction::up)
+  {
+    for (int i{0}; i < 3; i++)
+    {
+      logic::rotateRight(board);
+    }
+    logic::scooch(board, logic::direction::left);
+    logic::rotateRight(board);
+  }
 }
 
 void logic::rotateRight(std::vector< std::vector<int> > &board)
 {
-
+  std::vector <std::vector<int> > fakeBoard = board::create();
+  for (int x{0}; x < board.size(); x++)
+  {
+    for (int y{0}; y < board.size(); y++)
+    {
+      fakeBoard.at(y).at(x) = board.at(x).at(y);
+    }
+  }
+  board = fakeBoard;
 }
+
+/* For reference for turning it right:
+1 2 3 //for x for y
+10 20 30
+100 200 300
+
+1 10 100
+2 20 200
+3 30 300
+*/
 
 void logic::flip(std::vector< std::vector<int> > &board)
 {

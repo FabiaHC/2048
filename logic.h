@@ -9,8 +9,10 @@ namespace logic
 
   enum direction
   {
-    right = 1,
-    left = 0
+    right = 0,
+    left = 1,
+    down = 2,
+    up = 3
   };
 
   void scooch(std::vector< std::vector<int> > &board, direction dir);
