@@ -17,6 +17,7 @@ int main()
   bool acceptedInput;
   while (gameRunning)
   {
+		acceptedInput = true;
     do
     {
       std::cout << "=====" << std::endl;
