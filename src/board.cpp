@@ -4,6 +4,17 @@
 #include "board.h"
 #include "logic.h"
 
+int digitCount(int num) //returns the number of digits in the integer (base 10)
+{
+	int count = ( (num == 0) ? 1 : 0);
+	while (num != 0)
+	{
+		num /= 10;
+		count++;
+	}
+	return count;
+}
+
 std::vector <std::vector<int> > board::create()
 {
   std::vector <std::vector<int> > board;
@@ -16,11 +27,24 @@ std::vector <std::vector<int> > board::create()
 
 void board::display(std::vector <std::vector<int> > board)
 {
+	int number{0}; //number of current board cell
+	int numberWidth; //number of digits of number
+	int maxNumberWidth{5}; //width of the total size of the cell to be printed (4 characters as it goes up to 2048 (+1 for a space))
+	int spaces; //number of extra spaces to keep board formatted when printed
+	std::string extraSpaces;
   for (int y{0}; y < board.size(); y++)
   {
     for (int x{0}; x < board.at(y).size(); x++)
     {
-      std::cout << board[y][x];
+			extraSpaces = "";
+			number = board[y][x];
+			numberWidth = digitCount(number);
+			spaces = maxNumberWidth-numberWidth;
+			for (int i{0}; i < spaces; i++)
+			{
+				extraSpaces += " ";
+			}
+			std::cout << number << extraSpaces;
     }
     std::cout << std::endl;
   }
