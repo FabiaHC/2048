@@ -17,11 +17,11 @@ int main()
   bool acceptedInput;
   while (gameRunning)
   {
-		acceptedInput = true;
+		board::integrate(board, 2);
     do
     {
+			acceptedInput = true;
       std::cout << "=====" << std::endl;
-      board::integrate(board, 2);
       board::display(board);
       std::cin >> command;
 
